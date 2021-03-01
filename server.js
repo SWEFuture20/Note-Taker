@@ -22,6 +22,10 @@ app.get("/api/notes", function(req,res){
   // res.json(db)
 })
 
+app.post("/api/notes", function(req,res){
+
+})
+
 
 
 app.listen(PORT, function() {
