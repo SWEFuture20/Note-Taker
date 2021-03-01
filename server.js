@@ -19,7 +19,7 @@ app.get("/notes", function(req,res){
 })
 
 app.get("/api/notes", function(req,res){
-  // res.json(db)
+  res.json(db)
 })
 
 app.post("/api/notes", function(req,res){
