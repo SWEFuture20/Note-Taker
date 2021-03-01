@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/SWEFuture20/Note-Taker/issues"
   },
-  "homepage": "https://github.com/SWEFuture20/Note-Taker#readme"
+  "homepage": "https://github.com/SWEFuture20/Note-Taker#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
