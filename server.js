@@ -46,8 +46,13 @@ app.delete("/api/notes/:id", function(req,res){
   fs.readFile(db, (err,data) => {
     if (err) throw err;
     var save = JSON.parse(data)
-    save.filter(function ())
-    res.json(save);
+    save.filter(function (saved) {
+      return saved.id != req.params.id;
+    });
+    fs.writeFile(db, save, (err) => {
+      if (err) throw err
+    })
+    res.send(save);
   })
   }
 )
