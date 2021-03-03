@@ -43,12 +43,14 @@ app.post("/api/notes", function(req,res){
 })
 
 app.delete("/api/notes/:id", function(req,res){
-  for (var i = 0; i < db.length; i++){
-    db.push(req.params.id == id)
-    writetoFIle(db);
-  res.json(db);
+  fs.readFile(db, (err,data) => {
+    if (err) throw err;
+    var save = JSON.parse(data)
+    save.filter(function ())
+    res.json(save);
+  })
   }
-})
+)
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
