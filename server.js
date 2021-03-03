@@ -32,9 +32,14 @@ app.post("/api/notes", function(req,res){
     if (err) throw err;
     var save = JSON.parse(data)
     save.push(req.body)
-    fs.writeFile(save, )
+    save = JSON.stringify(save)
+    fs.writeFile(db, save, (err) => {
+      if (err) throw err;
+      var save = JSON.parse(save)
+      res.json(save);
+    })
   })
-  return res.json(db)
+  
 })
 
 app.delete("/api/notes/:id", function(req,res){
