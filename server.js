@@ -10,24 +10,39 @@ var PORT = 5000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-  });
-
 app.get("/notes", function(req,res){
   res.sendFile(path.join(__dirname, "./public/notes.html"));
 })
 
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "./public/index.html"));
+});
+
 app.get("/api/notes", function(req,res){
-  res.json(db)
+  fs.readFile(db, (err,data) => {
+    if (err) throw err;
+    var save = JSON.parse(data)
+    res.json(save);
+  })
+  
 })
 
 app.post("/api/notes", function(req,res){
-
+  fs.readFile(db, (err,data) => {
+    if (err) throw err;
+    var save = JSON.parse(data)
+    save.push(req.body)
+    fs.writeFile(save, )
+  })
+  return res.json(db)
 })
 
 app.delete("/api/notes/:id", function(req,res){
-
+  for (var i = 0; i < db.length; i++){
+    db.push(req.params.id == id)
+    writetoFIle(db);
+  res.json(db);
+  }
 })
 
 app.listen(PORT, function() {
